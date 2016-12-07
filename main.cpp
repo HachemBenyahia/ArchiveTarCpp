@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <bitset>
 
 using namespace std;
 
@@ -87,7 +88,7 @@ class File
         {
             char *size = m_header.getSize();
 
-
+            bitset<8>  a(size[0]); // continuer ici ; le premier bit donne le type d'encodage (base 8 ou 256) je pense
         }
 };
 
