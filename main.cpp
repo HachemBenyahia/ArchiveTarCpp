@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <bitset>
+#include <cmath>
 
 using namespace std;
 
@@ -65,6 +66,7 @@ class File
 {
     private :
         Header m_header;
+        char *content[]
 
     public :
         string getFileType()
@@ -88,12 +90,20 @@ class File
         {
             char *size = m_header.getSize();
 
-            bitset<8>  a(size[0]); // continuer ici ; le premier bit donne le type d'encodage (base 8 ou 256) je pense
+            int base = 8;
+
+            if(size[0] > 7)
+                base = 256;
+
+            int total = 0;
+            for(int i = 0 ; i < 11 ; i ++)
+                total += size[i] * pow(base, 11 - i);
+
+            return total;
         }
 };
 
 int main()
 {
-
     return 0;
 }
